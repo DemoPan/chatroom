@@ -1,2 +1,2 @@
 # chatroom
-node build local chat room
+> 练习用代码
