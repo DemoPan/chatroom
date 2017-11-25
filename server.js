@@ -17,7 +17,7 @@ function sendFile(response, filePath, fileContents) {
   response.end(fileContents);
 }
 
-function serverStatic(response, cache, absPath) {
+function serveStatic(response, cache, absPath) {
   if (cache[absPath]) {
     sendFile(response, absPath, cache[absPath]);
   } else {
@@ -48,7 +48,7 @@ var server = http.createServer(function(request, response) {
   }
 
   var absPath = "./" + filePath;
-  serverStatic(response, cache, absPath);
+  serveStatic(response, cache, absPath);
 });
 
 server.listen(3000, function() {

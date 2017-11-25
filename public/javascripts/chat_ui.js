@@ -11,7 +11,6 @@ function processUserInput(chatApp, socket) {
   var message = $("#send-message").val();
   var systemMessage;
 
-  console.log(message);
   if (message.chatAt(0) == "/") {
     systemMessage = chatApp.processCommand(message);
     if (systemMessage) {
@@ -20,7 +19,7 @@ function processUserInput(chatApp, socket) {
   } else {
     chatApp.sendMessage($("#room").text(), message);
     $("message").append(divEscapedContentElement(message));
-    $("message").scrollTop($("#message").prop("scrollHeight"));
+    $("message").scrollTop($("#messages").prop("scrollHeight"));
   }
 
   $("#send-message").val("");
@@ -54,7 +53,7 @@ $(document).ready(function() {
     $("#messages").appent(newElement);
   });
 
-  socket.on("rooms", function(room) {
+  socket.on("rooms", function(rooms) {
     $("#room-list").empty();
 
     for (var room in rooms) {
