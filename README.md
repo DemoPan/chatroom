@@ -1,8 +1,8 @@
-# chatroom
+# 简易聊天室
 
-## Usage
+## 使用
 
 ```
 $ npm install
-$ node server.js
+$ node server.js # 访问 http://localhost:3000
 ```
