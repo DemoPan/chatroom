@@ -1,2 +1,8 @@
 # chatroom
-> 练习用代码
+
+## Usage
+
+```
+$ npm install
+$ node server.js
+```
