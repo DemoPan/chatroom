@@ -17,22 +17,22 @@ function sendFile(response, filePath, fileContents) {
   response.end(fileContents);
 }
 
-function serveStatic(response, cache, absPath) {
+function serveStatic(response, cache, absPath) { //检查文件是否存在在缓存中
   if (cache[absPath]) {
-    sendFile(response, absPath, cache[absPath]);
+    sendFile(response, absPath, cache[absPath]); // 从内存中返回文件
   } else {
-    fs.exists(absPath, function(exists) {
+    fs.exists(absPath, function(exists) { //检查文件是否存在
       if (exists) {
-        fs.readFile(absPath, function(err, data) {
+        fs.readFile(absPath, function(err, data) {　//从硬盘读取文件
           if (err) {
             send404(response);
           } else {
             cache[absPath] = data;
-            sendFile(response, absPath, data);
+            sendFile(response, absPath, data); //从硬盘中读取文件并返回
           }
         });
       } else {
-        send404(response);
+        send404(response); //发送HTTP 404响应
       }
     });
   }
