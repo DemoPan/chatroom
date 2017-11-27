@@ -4,5 +4,5 @@
 
 ```bash
 $ npm install
-$ node server.js                # 访问 http://localhost:3000
+$ node server.js     # 访问 http://localhost:3000
 ```

@@ -38,17 +38,17 @@ function serveStatic(response, cache, absPath) { //检查文件是否存在在�
   }
 }
 
-var server = http.createServer(function(request, response) {
+var server = http.createServer(function(request, response) { //创建HTTP服务器，用匿名函数定义对每个请求的处理行为
   var filePath = false;
 
   if (request.url == "/") {
-    filePath = "public/index.html";
+    filePath = "public/index.html";  //确定返回的默认HTML文件
   } else {
-    filePath = "public/" + request.url;
+    filePath = "public/" + request.url; //将URL路径转为文件的相对路径
   }
 
   var absPath = "./" + filePath;
-  serveStatic(response, cache, absPath);
+  serveStatic(response, cache, absPath); //返回静态文件
 });
 
 server.listen(3000, function() {
